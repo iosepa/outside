@@ -1,0 +1,8 @@
+<div class='d-none' #Lat:{{Lat}}
+#Long:{{Long}}></div>
+<div *ngIf="!loading" class='weatherTop'>
+<img src={{weatherInfo.icon}}><h1 id="temp">{{weatherInfo.temp}}&deg;F</h1>
+</div>
+
+<h4 style="text-align: center">{{weatherInfo.name}}</h4>
+<div *ngIf="loading"></div>

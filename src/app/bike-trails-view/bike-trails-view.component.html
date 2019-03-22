@@ -1,0 +1,23 @@
+<div *ngIf="!loading" class='weatherTop'>
+
+
+<div class="container m-t-d">
+  <article class="card m-3"
+    *ngFor="let trail of myTrails">
+   
+            <img *ngIf="trail.img && trail.img.indexOf('no_photo')<0" src={{trail.img}} class="card-img-top img-responsive">
+                <h5 class="card-header bg-success text-white">{{trail.name}}</h5>
+                <p>{{trail.length}}m <span *ngIf="trail.rating && trail.rating > 0"> {{trail.rating}}/5</span> {{trail.distance}}km away!</p>
+                        
+
+
+</article>
+
+
+</div>
+</div>
+
+
+<div *ngIf="loading" class="spinner-border text-warning mx-auto" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
