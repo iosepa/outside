@@ -22,7 +22,7 @@ export class WeatherViewComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.loading = true; /*
+    this.loading = true; 
     this.locationService.getLoc()
       .then((res: any)=>{
         this.Lat = res.lat;
@@ -34,7 +34,7 @@ export class WeatherViewComponent implements OnInit, OnChanges {
           this.weatherInfo.icon = res2.icon;
           this.loading = false;
         })
-      })*/
+      })
   }
 
 

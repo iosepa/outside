@@ -18,7 +18,7 @@ export class BikeTrailsViewComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    /*this.locationService.getLoc()
+    this.locationService.getLoc()
     .then((res: any) =>{
       this.Lat = res.lat;
       this.Long = res.long;
@@ -28,7 +28,7 @@ export class BikeTrailsViewComponent implements OnInit {
         this.myTrails.sort((t1,t2)=> t1.distance - t2.distance);
         this.loading = false;
       });
-    })*/
+    })
   }
 
 }
