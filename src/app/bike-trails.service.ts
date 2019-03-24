@@ -62,7 +62,7 @@ trails: bikeTrail[];
     return promise;
   }
   getDistance(lat1,lon1,lat2,lon2) {
-    const R = 6371; // Radius of the earth in km
+    const R = 3959; // Radius of the earth in miles
     const dLat = this.deg2rad(lat2-lat1);  // deg2rad below
     const dLon = this.deg2rad(lon2-lon1); 
     let a = 

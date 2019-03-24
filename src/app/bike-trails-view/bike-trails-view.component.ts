@@ -34,3 +34,47 @@ export class BikeTrailsViewComponent implements OnInit {
 }
 
 
+/*
+ ngOnInit() {
+    this.loading = true;
+      let aTrail = new bikeTrail(
+        "a trail", 
+        4.6, 
+        4, 
+        "really really hard",
+        45,
+        34, 
+        "./assets/images/cycle_path.jpg",
+        "this is the funnest, funniest, funnerist trail out there",
+        "https://funtrail.com",
+        80,
+      );
+      let bTrail = new bikeTrail(
+        "b trail", 
+        2.3, 
+        4, 
+        "really really hard",
+        45,
+        34, 
+        "./assets/images/cycle_path.jpg",
+        "this is the funnest, funniest, funnerist trail out there",
+        "https://funtrail.com",
+        80,
+      );
+      let cTrail = new bikeTrail(
+        "c trail / or another name / or antoher really long", 
+        3.3, 
+        4, 
+        "really really hard",
+        45,
+        34, 
+        "./assets/images/cycle_path.jpg",
+        "this is the funnest, funniest, funnerist trail out there",
+        "https://funtrail.com",
+        80,
+      );
+      this.myTrails = [aTrail, bTrail, cTrail];
+      this.loading = false;
+    }
+  }
+  */

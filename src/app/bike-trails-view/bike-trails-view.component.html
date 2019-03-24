@@ -1,20 +1,42 @@
 <div *ngIf="!loading" class='weatherTop'>
 
 
-<div class="container m-t-d">
-  <article class="card m-3"
-    *ngFor="let trail of myTrails">
+  <div class="container">
+
+    <div class="flip-card"  *ngFor="let trail of myTrails">
+        <div class="flip-card-inner">
+    <article class="card text-center flip-card-front">
    
             <img *ngIf="trail.img && trail.img.indexOf('no_photo')<0" src={{trail.img}} class="card-img-top img-responsive">
                 <h5 class="card-header bg-success text-white">{{trail.name}}</h5>
-                <p>{{trail.length}}m <span *ngIf="trail.rating && trail.rating > 0"> {{trail.rating}}/5</span> {{trail.distance}}km away!</p>
-                        
-
-
+                  <div id="rating" *ngIf="trail.rating" class="text-warning">
+                    <span class="fa fa-star" *ngIf="trail.rating >= 0.5"></span>
+                    <span class="fa fa-star" *ngIf="trail.rating >= 1.5"></span>
+                    <span class="fa fa-star" *ngIf="trail.rating >= 2.5"></span>
+                    <span class="fa fa-star" *ngIf="trail.rating >= 3.5"></span>
+                    <span class="fa fa-star" *ngIf="trail.rating >= 4.5"></span>
+                  </div>
+                <p><b>{{trail.distance}}</b> miles from you</p>
+    </article>
+    <article class="card text-center flip-card-back">
+   
+            <h5 class="card-header bg-success text-white">{{trail.name}}</h5>
+            <p>Length: <b>{{trail.length}}</b> miles</p>
+              <div id="rating" *ngIf="trail.rating" class="text-warning">
+                <span class="fa fa-star" *ngIf="trail.rating >= 0.5"></span>
+                <span class="fa fa-star" *ngIf="trail.rating >= 1.5"></span>
+                <span class="fa fa-star" *ngIf="trail.rating >= 2.5"></span>
+                <span class="fa fa-star" *ngIf="trail.rating >= 3.5"></span>
+                <span class="fa fa-star" *ngIf="trail.rating >= 4.5"></span>
+              </div>
+            <h6>{{trail.difficulty}}</h6>
+            <a href={{trail.link}}>
+            <p>{{trail.description}}</p></a>
 </article>
 
-
-</div>
+    </div>
+  </div>
+  </div>
 </div>
 
 

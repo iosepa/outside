@@ -35,7 +35,7 @@ export class LocationService {
         },
         error => {
             //do error handling
-            console.log("we have a problem" + error.message);
+            console.log("There was a problem: " + error.message);
             reject();
         },
         {
