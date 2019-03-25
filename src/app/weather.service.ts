@@ -16,7 +16,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
   
-  findWeather(location){
+  findWeather(location){ //might want to switch this api in the future, not sure it is 100% reliable, but will work for this
     let promise = new Promise((resolve, reject) => {
       this.http
         .get(`https://fcc-weather-api.glitch.me/api/current?lat=${location.lat}&lon=${location.long}`)

@@ -5,8 +5,10 @@
 
     <div class="flip-card"  *ngFor="let trail of myTrails">
         <div class="flip-card-inner">
+        
     <article class="card text-center flip-card-front">
-   
+        <a class="front-link" [routerLink]="[ '/trail', {id: trail.id}]">
+
             <img *ngIf="trail.img && trail.img.indexOf('no_photo')<0" src={{trail.img}} class="card-img-top img-responsive">
                 <h5 class="card-header bg-success text-white">{{trail.name}}</h5>
                   <div id="rating" *ngIf="trail.rating" class="text-warning">
@@ -17,6 +19,7 @@
                     <span class="fa fa-star" *ngIf="trail.rating >= 4.5"></span>
                   </div>
                 <p><b>{{trail.distance}}</b> miles from you</p>
+                </a>
     </article>
     <article class="card text-center flip-card-back">
    
@@ -30,8 +33,8 @@
                 <span class="fa fa-star" *ngIf="trail.rating >= 4.5"></span>
               </div>
             <h6>{{trail.difficulty}}</h6>
-            <a href={{trail.link}}>
-            <p>{{trail.description}}</p></a>
+            <a [routerLink]="[ '/trail', {id: trail.id}]">more info</a>
+            <p>{{ (trail.description.length > 220) ? (trail.description | slice:0:220)+'...' : trail.description}}</p>
 </article>
 
     </div>

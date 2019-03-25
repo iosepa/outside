@@ -17,11 +17,19 @@ export class LocationService {
     this.loading = false;
   }
 
+  hasLoc() {
+    if (this.results){
+      return true
+    }
+    return false
+  }
+
   getLoc() {
     let promise = new Promise((resolve, reject) => {
 
-    if (this.results){
+    if (this.results){ //don't call if location is already found
       resolve(this.results);
+      return promise;
     }
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

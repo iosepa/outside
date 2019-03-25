@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
 import { BikeTrailsService, bikeTrail } from '../bike-trails.service';
+import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-bike-trails-view',
@@ -14,8 +16,10 @@ export class BikeTrailsViewComponent implements OnInit {
   loading: boolean;
 
   constructor(private locationService: LocationService, private bikes: BikeTrailsService) {
-  }
+      
+    }
 
+    
   ngOnInit() {
     this.loading = true;
     this.locationService.getLoc()
@@ -54,8 +58,8 @@ export class BikeTrailsViewComponent implements OnInit {
         2.3, 
         4, 
         "really really hard",
-        45,
-        34, 
+        44.04111,
+        -91.66230, 
         "./assets/images/cycle_path.jpg",
         "this is the funnest, funniest, funnerist trail out there",
         "https://funtrail.com",
@@ -78,3 +82,4 @@ export class BikeTrailsViewComponent implements OnInit {
     }
   }
   */
+  

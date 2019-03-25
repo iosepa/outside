@@ -1,0 +1,40 @@
+<div *ngIf="!loading" class='weatherTop'>
+
+
+    <div class="container">
+  
+      <div class="flip-card">
+          <div class="flip-card-inner">
+          
+      <article class="card text-center flip-card-front">
+     
+              <img *ngIf="thisTrail.img && thisTrail.img.indexOf('no_photo')<0" src={{thisTrail.img}} class="card-img-top img-responsive">
+                  <h5 class="card-header bg-success text-white">{{thisTrail.name}}</h5>
+                    <div id="rating" *ngIf="thisTrail.rating" class="text-warning">
+                      <span class="fa fa-star" *ngIf="thisTrail.rating >= 0.5"></span>
+                      <span class="fa fa-star" *ngIf="thisTrail.rating >= 1.5"></span>
+                      <span class="fa fa-star" *ngIf="thisTrail.rating >= 2.5"></span>
+                      <span class="fa fa-star" *ngIf="thisTrail.rating >= 3.5"></span>
+                      <span class="fa fa-star" *ngIf="thisTrail.rating >= 4.5"></span>
+                    </div>
+
+     
+              <p>Length: <b>{{thisTrail.length}}</b> miles</p>
+
+              <h6>{{thisTrail.difficulty}}</h6>
+              <a [routerLink]="[ '/localtrails']">more local trails</a>
+  
+              <a href={{thisTrail.link}}>trail info on singletracks.com</a>
+              <p>{{thisTrail.description}}</p>
+              
+  </article>
+  
+      </div>
+    </div>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="loading" class="spinner-border text-warning mx-auto" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>

@@ -13,6 +13,7 @@ export class bikeTrail {
   public description: string,
   public link: string,
   public distance: number,
+  public id: number,
   ){}
 }
 
@@ -22,11 +23,64 @@ export class bikeTrail {
 })
 export class BikeTrailsService {
 trails: bikeTrail[];
+trail: bikeTrail;
 
   constructor(private http: HttpClient) { }
 
+  haveTrails() {
+    if (this.trails){
+      return true
+    }
+    return false
+  }
+
+  getTrail(id){ //this is if you start the application from a single trail page - calls for info on that one page
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get(`https://trailapi-trailapi.p.rapidapi.com/trails/${id}`,
+        {
+          headers: new HttpHeaders().set("X-RapidAPI-Key", "b2f714b446msh356c3f7a7b4ecd8p1b1453jsnfc7e5f691eec")
+        })
+        .toPromise()
+        .then(
+          (res: any) => {
+            // Success
+            this.trail = new bikeTrail(
+                res.data[0].name,
+                res.data[0].rating,
+                res.data[0].length,
+                res.data[0].difficulty,
+                0,
+                0,
+                res.data[0].thumbnail && res.data[0].thumbnail.indexOf('no_photo')<0 ? res.data[0].thumbnail : "./assets/images/cycle_path.jpg",
+                res.data[0].description,
+                res.data[0].url,
+                0,
+                res.data[0].id,
+              )
+            
+            resolve(this.trail);
+            
+            },
+          msg => {
+            // Error
+            reject(msg);
+          }
+        );
+
+      });
+      return promise;
+
+  }
+
   findTrails(lat, long) {
     let promise = new Promise((resolve, reject) => {
+
+      if (this.trails) { //if we've already got the trails no need to make another api call
+        resolve(this.trails);
+        return promise;
+      }
+
       this.http
         .get(`https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=${lat}&lon=${long}`,
         {
@@ -35,7 +89,7 @@ trails: bikeTrail[];
         .toPromise()
         .then(
           (res: any) => {
-            // Success
+            // Success - make a bunch of new biketrail objects and push them into an array - then return it!
             this.trails = res.data.map((aTrail: any)=>{
               return new bikeTrail(
                 aTrail.name,
@@ -48,9 +102,10 @@ trails: bikeTrail[];
                 aTrail.description,
                 aTrail.url,
                 this.getDistance(lat, long, aTrail.lat, aTrail.lon),
+                aTrail.id
               )
             })
-            console.log(res)
+            //console.log(res)
             resolve(this.trails);
           },
           msg => {
