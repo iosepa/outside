@@ -89,6 +89,8 @@ trail: bikeTrail;
         .toPromise()
         .then(
           (res: any) => {
+
+            if (res.results > 0){
             // Success - make a bunch of new biketrail objects and push them into an array - then return it!
             this.trails = res.data.map((aTrail: any)=>{
               return new bikeTrail(
@@ -107,6 +109,10 @@ trail: bikeTrail;
             })
             //console.log(res)
             resolve(this.trails);
+            }
+            else{
+              reject("I'm sorry. No trails found. Please add some at: https://www.singletracks.com/mtb/add/")
+            }
           },
           msg => {
             // Error

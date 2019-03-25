@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
 import { BikeTrailsService, bikeTrail } from '../bike-trails.service';
-import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -28,10 +27,15 @@ export class BikeTrailsViewComponent implements OnInit {
       this.Long = res.long;
       this.bikes.findTrails(this.Lat, this.Long)
       .then((results: any) => {
+
         this.myTrails = results;
         this.myTrails.sort((t1,t2)=> t1.distance - t2.distance);
         this.loading = false;
-      });
+      },
+      (err => {
+        alert(err)
+        this.loading = false;
+      }));
     })
   }
 
